@@ -34,12 +34,23 @@ setup(
 
     keywords='test testing offline integration multiple packages',
     classifiers="""\
+Development Status :: 1 - Planning
+Environment :: Console
+Intended Audience :: Developers
+License :: OSI Approved
 License :: OSI Approved :: Zope Public License
+Natural Language :: English
+Operating System :: OS Independent
 Programming Language :: Python
 Programming Language :: Python :: 3
-Programming Language :: Python :: 3 :: only
+Programming Language :: Python :: 3 :: Only
 Programming Language :: Python :: 3.5
+Programming Language :: Python :: Implementation
 Programming Language :: Python :: Implementation :: CPython
+Topic :: Software Development
+Topic :: Software Development :: Testing
+Topic :: Software Development :: Quality Assurance
+Topic :: Utilities
 """[:-1].split('\n'),
     description=__doc__.strip(),
     long_description='\n\n'.join(open(project_path(name)).read() for name in (
