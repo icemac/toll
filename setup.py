@@ -1,7 +1,4 @@
-# This should be only one line. If it must be multi-line, indent the second
-# line onwards to keep the PKG-INFO file format intact.
-"""*t*est *o*ffline *l*ocally *l* ... a poor man's integration testing
-"""
+"""poor man's integration testing"""
 
 from setuptools import setup, find_packages
 import glob
