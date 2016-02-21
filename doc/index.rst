@@ -3,9 +3,6 @@
 .. toctree::
     :maxdepth: 2
 
-    api
+    config
     about
     changes
-
-
-- :ref:`genindex`
