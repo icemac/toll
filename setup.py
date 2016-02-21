@@ -6,6 +6,7 @@ import os.path
 
 
 def project_path(*names):
+    """Path to a file in the project."""
     return os.path.join(os.path.dirname(__file__), *names)
 
 
