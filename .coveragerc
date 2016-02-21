@@ -1,0 +1,11 @@
+[run]
+branch = True
+source = toll
+
+[report]
+precision = 2
+omit = */interfaces.py
+       */test_*
+
+[html]
+directory = coverage-report
