@@ -19,3 +19,16 @@ Developing toll
 
 :Current change log:
     https://bitbucket.org/icemac/toll/raw/tip/CHANGES.rst
+
+:Upload the docs:
+    $ python3.5 setup.py upload_docs
+
+
+Run the tests
+=============
+
+To run the tests install the test runner and call it::
+
+    $ python3.5 bootstrap.py
+    $ bin/buildout
+    $ bin/test
