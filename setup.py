@@ -24,7 +24,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            # 'binary-name = toll.module:function'
+            'toll = toll.main:main'
         ],
     },
 
