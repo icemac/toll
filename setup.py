@@ -28,10 +28,10 @@ setup(
         ],
     },
 
-    author='gocept <mail@gocept.com>',
-    author_email='mail@gocept.com',
+    author='Michael Howitz',
+    author_email='icemac@gmx.net',
     license='ZPL 2.1',
-    url='https://bitbucket.org/gocept/toll/',
+    url='https://bitbucket.org/icemac/toll/',
 
     keywords='test testing offline integration multiple packages',
     classifiers="""\
