@@ -1,4 +1,5 @@
 from .config import Configuration
+from .run import Runner
 import argparse
 
 
@@ -11,4 +12,6 @@ def main(raw_args=None):
         help='ini-style file to read the configuration from')
 
     args = parser.parse_args(raw_args)
-    Configuration(args.file)
+    config = Configuration(args.file)
+    runner = Runner(config)
+    return runner()
