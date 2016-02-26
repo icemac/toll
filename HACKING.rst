@@ -27,7 +27,7 @@ To run the tests install the test runner and call it::
 
     $ python3.5 bootstrap.py
     $ bin/buildout
-    $ bin/test
+    $ bin/py.test
 
 
 Upload the docs
