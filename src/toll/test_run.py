@@ -1,4 +1,6 @@
 from .run import Runner
+import os
+import os.path
 import pkg_resources
 import sys
 
@@ -9,8 +11,12 @@ class MockConfig:
     commands = {'test': '{0.executable} setup.py -q test'.format(sys)}
 
     def __init__(self, packages):
+        base_path = "{0}{1.sep}".format(os.getcwd(), os)
+        # self.packages contains paths relative to the package name to be able
+        # to test os.chdir calls.
         self.packages = [
-            pkg_resources.resource_filename('toll', 'fixtures/{}'.format(x))
+            pkg_resources.resource_filename(
+                'toll', 'fixtures/{}'.format(x)).replace(base_path, '')
             for x in packages]
 
 
@@ -27,7 +33,6 @@ def test_run____call____2(capsys):
     out, err = capsys.readouterr()
     assert 'Testing {}'.format(runner.config.packages[0]) in out
     assert 'Testing {}'.format(runner.config.packages[1]) in out
-    assert 2 == out.count('OK')
     assert out.strip().endswith('SUCCESS :-)')
 
 
@@ -37,7 +42,5 @@ def test_run____call____3(capsys):
     runner()
     out, err = capsys.readouterr()
     assert 'Testing {}'.format(runner.config.packages[0]) in out
-    assert 'FAILED (failures=1)' in out
     assert 'Testing {}'.format(runner.config.packages[1]) not in out
-    assert 'OK' not in out
     assert out.strip().endswith('FAILURE :-(')

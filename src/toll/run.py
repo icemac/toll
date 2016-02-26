@@ -9,24 +9,23 @@ class Runner:
         self.config = config
 
     def __call__(self):
-        cwd = os.getcwd()
-        try:
-            return self.test(
-                self.config.commands['test'], self.config.packages)
-        finally:
-            os.chdir(cwd)
-
-    def test(self, cmd, packages):
-        for package in packages:
-            print('Testing', package)
-            os.chdir(package)
-            status, output = subprocess.getstatusoutput(cmd)
-            print(output)
-            if status != 0:
+        cmd = self.config.commands['test']
+        for package in self.config.packages:
+            if not self.test(cmd, package):
                 self.render_failure()
                 return False
         self.render_success()
         return True
+
+    def test(self, cmd, package):
+        print('Testing', package)
+        cwd = os.getcwd()
+        os.chdir(package)
+        try:
+            process = subprocess.Popen(cmd.split())
+            return process.wait() == 0
+        finally:
+            os.chdir(cwd)
 
     def render_failure(self):
         print('FAILURE :-(')
