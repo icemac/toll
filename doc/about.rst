@@ -1,3 +1,11 @@
 .. include:: ../HACKING.rst
-.. literalinclude:: ../COPYRIGHT.txt
-.. literalinclude:: ../LICENSE.txt
+
+Copyright
+=========
+
+.. include:: ../COPYRIGHT.txt
+
+License
+=======
+
+.. include:: ../LICENSE.txt

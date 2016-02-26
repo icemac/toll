@@ -56,7 +56,7 @@ Topic :: Utilities
     description=__doc__.strip(),
     long_description='\n\n'.join(open(project_path(name)).read() for name in (
         'README.rst',
-        'HACKING.rst',
+        'COPYRIGHT.txt',
         'CHANGES.rst',
     )),
     packages=find_packages('src'),
