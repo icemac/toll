@@ -12,7 +12,7 @@ def project_path(*names):
 
 setup(
     name='toll',
-    version='0.1.dev0',
+    version='1.0',
 
     install_requires=[
     ],
