@@ -23,11 +23,18 @@ Developing toll
 Run the tests
 =============
 
-To run the tests install the test runner and call it::
+Install the test runner and the `toll` script::
 
     $ python3.5 bootstrap.py
     $ bin/buildout
+
+Call the test runner::
+
     $ bin/py.test
+
+To run the tests of `toll` using `toll` itself call::
+
+    $ bin/toll selftest.ini
 
 
 Upload the docs
