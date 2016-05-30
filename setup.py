@@ -9,6 +9,13 @@ def project_path(*names):
     """Path to a file in the project."""
     return os.path.join(os.path.dirname(__file__), *names)
 
+test_require = []
+
+try:
+    import unittest.mock  # noqa
+except ImportError:
+    test_require.append('mock')
+
 
 setup(
     name='toll',
@@ -18,8 +25,7 @@ setup(
     ],
 
     extras_require={
-        'test': [
-        ],
+        'test': test_require,
     },
 
     entry_points={
@@ -43,8 +49,9 @@ License :: OSI Approved :: Zope Public License
 Natural Language :: English
 Operating System :: OS Independent
 Programming Language :: Python
+Programming Language :: Python :: 2
+Programming Language :: Python :: 2.7
 Programming Language :: Python :: 3
-Programming Language :: Python :: 3 :: Only
 Programming Language :: Python :: 3.5
 Programming Language :: Python :: Implementation
 Programming Language :: Python :: Implementation :: CPython

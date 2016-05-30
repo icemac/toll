@@ -1,4 +1,4 @@
-import configparser
+from .compat import ConfigParser
 
 
 class Configuration:
@@ -8,15 +8,15 @@ class Configuration:
     packages = None  # list of paths to packages to be tested
 
     def __init__(self, config_file):
-        config = configparser.ConfigParser(allow_no_value=True)
-        config.read_file(config_file)
+        config = ConfigParser(allow_no_value=True)
+        config.readfp(config_file)
         self.commands = self._extract_commands(config)
         self.packages = self._extract_packages(config)
 
     @classmethod
     def _extract_commands(cls, config):
         cls._assert_section(config, 'commands')
-        commands = config['commands']
+        commands = dict(config.items('commands'))
         if 'test' not in commands:
             raise RuntimeError(
                 'Section [commands] in the config file does not contain the '
@@ -26,7 +26,7 @@ class Configuration:
     @classmethod
     def _extract_packages(cls, config):
         cls._assert_section(config, 'packages')
-        return list(config['packages'].keys())
+        return config.options('packages')
 
     @classmethod
     def _assert_section(cls, config, name):
