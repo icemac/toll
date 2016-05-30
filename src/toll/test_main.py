@@ -13,6 +13,6 @@ def test_main__main__1():
 def test_main__main__2():
     """It defaults to `toll.ini` as the config file."""
     with patch('toll.main.Configuration') as Configuration:
-        main()
+        main([])
     assert Configuration.called
     assert 'toll.ini' == Configuration.call_args[0][0].name

@@ -8,6 +8,7 @@ syntax: glob
 .coverage
 .installed.cfg
 .mr.developer.cfg
+.tox/
 bin
 build
 coverage-report/
