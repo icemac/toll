@@ -34,8 +34,8 @@ Install it as usual using pip::
 Config file
 -----------
 
-You need an ini style config file. Example contents of a file named
-`config.ini`::
+You need an ini style config file. Its name should default to `toll.ini`. Here
+are example contents of such a file.::
 
     [packages]
     my.package.one
@@ -51,7 +51,7 @@ Run it
 
 Run it using::
 
-    $ toll config.ini
+    $ toll
 
 For other options see::
 

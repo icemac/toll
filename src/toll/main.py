@@ -8,7 +8,8 @@ def main(raw_args=None):
     parser = argparse.ArgumentParser(
         description="poor man's integration testing")
     parser.add_argument(
-        'file', metavar='config-file', type=argparse.FileType('r'),
+        '-c', '--config', dest='file', type=argparse.FileType('r'),
+        default='toll.ini',
         help='ini-style file to read the configuration from')
 
     args = parser.parse_args(raw_args)
