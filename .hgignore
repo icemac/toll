@@ -3,6 +3,7 @@ syntax: glob
 *.egg-info
 *.pyc
 *.pyo
+.DS_Store
 .cache
 .coverage
 .installed.cfg
