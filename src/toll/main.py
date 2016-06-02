@@ -14,5 +14,5 @@ def main(raw_args=None):
 
     args = parser.parse_args(raw_args)
     config = Configuration(args.file)
-    runner = Runner(config)
+    runner = Runner(config.command, config.packages)
     return runner()

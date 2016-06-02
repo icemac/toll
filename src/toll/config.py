@@ -4,24 +4,24 @@ from .compat import ConfigParser
 class Configuration:
     """Configuration for the test runs."""
 
-    commands = None  # dict of commands mapping type to command
+    command = None  # command to run
     packages = None  # list of paths to packages to be tested
 
     def __init__(self, config_file):
         config = ConfigParser(allow_no_value=True)
         config.readfp(config_file)
-        self.commands = self._extract_commands(config)
+        self.command = self._extract_command(config)
         self.packages = self._extract_packages(config)
 
     @classmethod
-    def _extract_commands(cls, config):
+    def _extract_command(cls, config):
         cls._assert_section(config, 'commands')
         commands = dict(config.items('commands'))
         if 'test' not in commands:
             raise RuntimeError(
                 'Section [commands] in the config file does not contain the '
                 'key "test" which is needed to define the test command.')
-        return commands
+        return commands['test']
 
     @classmethod
     def _extract_packages(cls, config):

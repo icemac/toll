@@ -6,13 +6,13 @@ import subprocess
 class Runner:
     """Run the tests."""
 
-    def __init__(self, config):
-        self.config = config
+    def __init__(self, command, packages):
+        self.command = command
+        self.packages = packages
 
     def __call__(self):
-        cmd = self.config.commands['test']
-        for package in self.config.packages:
-            if not self.test(cmd, package):
+        for package in self.packages:
+            if not self.test(self.command, package):
                 self.render_failure()
                 return False
         self.render_success()

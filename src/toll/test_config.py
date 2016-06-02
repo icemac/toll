@@ -21,7 +21,7 @@ test = bin/py.test
 foo.a
 bar.x""")
     config = Configuration(file)
-    assert {'test': 'bin/py.test'} == dict(config.commands)
+    assert 'bin/py.test' == config.command
     assert ['foo.a', 'bar.x'] == config.packages
 
 
