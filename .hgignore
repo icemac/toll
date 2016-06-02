@@ -6,14 +6,17 @@ syntax: glob
 .DS_Store
 .cache
 .coverage
+.coverage.*
 .installed.cfg
 .mr.developer.cfg
 .tox/
 bin
 build
 coverage-report/
+coverage.xml
 develop-eggs
 dist
 doc/_api
 eggs
 parts
+test-report/
