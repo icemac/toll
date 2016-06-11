@@ -1,35 +1,36 @@
 from .compat import ConfigParser
 
 
-class Configuration:
-    """Configuration for the test runs."""
+__all__ = ['parsed_file', 'packages', 'commands']
 
-    command = None  # command to run
-    packages = None  # list of paths to packages to be tested
 
-    def __init__(self, config_file):
-        config = ConfigParser(allow_no_value=True)
-        config.readfp(config_file)
-        self.command = self._extract_command(config)
-        self.packages = self._extract_packages(config)
+def parsed_file(config_file):
+    """Parse an ini-style config file."""
+    parser = ConfigParser(allow_no_value=True)
+    parser.readfp(config_file)
+    return parser
 
-    @classmethod
-    def _extract_command(cls, config):
-        cls._assert_section(config, 'commands')
-        commands = dict(config.items('commands'))
-        if 'test' not in commands:
-            raise RuntimeError(
-                'Section [commands] in the config file does not contain the '
-                'key "test" which is needed to define the test command.')
-        return commands['test']
 
-    @classmethod
-    def _extract_packages(cls, config):
-        cls._assert_section(config, 'packages')
-        return config.options('packages')
+def packages(config):
+    """Return the packages defined in the config file as tuple."""
+    _assert_section(config, 'packages')
+    return tuple(config.options('packages'))
 
-    @classmethod
-    def _assert_section(cls, config, name):
-        if name not in config.sections():
-            raise RuntimeError(
-                'Missing the section [{}] in the config file.'.format(name))
+
+def commands(config, names):
+    """Return the list of commands to run."""
+    _assert_section(config, 'commands')
+    commands = dict(config.items('commands'))
+    try:
+        return tuple(commands[x] for x in names)
+    except KeyError as e:
+        raise RuntimeError(
+            'Section [commands] in the config file does not contain the '
+            'key {.args[0]!r} you requested to execute.'.format(e))
+
+
+def _assert_section(config, name):
+    """Make sure that a section exists in the config file."""
+    if name not in config.sections():
+        raise RuntimeError(
+            'Missing the section [{}] in the config file.'.format(name))
