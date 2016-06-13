@@ -44,7 +44,8 @@ are example contents of such a file.::
     [commands]
     test = bin/py.test
 
-For the complete list of possible config options see the section :doc:`config`.
+For the complete list of possible configuration options see the
+section :doc:`config`.
 
 Run it
 ------

@@ -2,19 +2,25 @@
 Config file
 ===========
 
-There can be several sections in the config file. They are described here.
+There can be the following sections in the config file:
 
 [packages]
 ==========
 
-This section contains a list of relative paths of packages which should be
-tested.
+This section contains a list of relative paths of packages. They are used to
+run commands on them.
+
+Example::
+
+    [packages]
+    ../foo.bar
+    pkgs/baz
 
 
 [commands]
 ==========
 
-This section contains the commands which can be run using toll.
+This section contains the commands which can be run using `toll`.
 
 test
 ----
