@@ -22,10 +22,8 @@ Example::
 
 This section contains the commands which can be run using `toll`.
 
-test
-----
-
-This configures the test command run inside each package. Example::
+Example::
 
     [commands]
+    build = bin/buildout -n
     test = bin/py.test

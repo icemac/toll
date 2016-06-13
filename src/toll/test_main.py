@@ -32,8 +32,8 @@ def test_main__main__1(toll_ini, capsys):
     config_path = toll_ini('fine', 'finetoo')
     main(['-c', config_path])
     out, err = capsys.readouterr()
-    assert re.search('^Testing.*/fine$', out, re.M)
-    assert re.search('^Testing.*/finetoo$', out, re.M)
+    assert re.search('^Running .* setup.py -q test on .*/fine$', out, re.M)
+    assert re.search('^Running .* setup.py -q test on .*/finetoo$', out, re.M)
     assert out.strip().endswith('SUCCESS :-)')
 
 

@@ -6,20 +6,21 @@ import subprocess
 class Runner:
     """Run the tests."""
 
-    def __init__(self, command, packages):
-        self.command = command
+    def __init__(self, commands, packages):
+        self.commands = commands
         self.packages = packages
 
     def __call__(self):
-        for package in self.packages:
-            if not self.test(self.command, package):
-                self.render_failure()
-                return False
+        for command in self.commands:
+            for package in self.packages:
+                if not self.run(command, package):
+                    self.render_failure()
+                    return False
         self.render_success()
         return True
 
-    def test(self, cmd, package):
-        print('Testing', package)
+    def run(self, cmd, package):
+        print('Running', cmd, 'on', package)
         cwd = os.getcwd()
         os.chdir(package)
         try:

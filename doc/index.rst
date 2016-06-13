@@ -4,11 +4,13 @@ toll — poor man's integration testing
 
 toll = **t**\ est **o**\ ffline **l**\ ocally **l**\ ightweight
 
-Run the tests of multiple configured packages:
+Run commands on multiple configured packages:
 
-* right one package after another
+* Commands can be set-up steps or a call to the test runner etc.
 
-* stopping with the first package which has a failing test
+* Each command is run on each package.
+
+* It stops if a command exits with a non-zero exit code (aka an error).
 
 .. raw:: html
 
@@ -18,8 +20,8 @@ Run the tests of multiple configured packages:
 Requirements
 ============
 
-* The packages for test have to be checked out and build beforehand.
-* The test runners of the packages have to be called with an identical call.
+* The packages have to be checked out beforehand.
+* Currently the commands have to be identical across all packages.
 
 Usage
 =====
@@ -34,7 +36,7 @@ Install it as usual using pip::
 Config file
 -----------
 
-You need an ini style config file. Its name should default to `toll.ini`. Here
+You need an ini style config file. Its name should be `toll.ini`. Here
 are example contents of such a file.::
 
     [packages]
@@ -43,6 +45,7 @@ are example contents of such a file.::
 
     [commands]
     test = bin/py.test
+    build = bin/buildout -n
 
 For the complete list of possible configuration options see the
 section :doc:`config`.
@@ -50,9 +53,14 @@ section :doc:`config`.
 Run it
 ------
 
-Run it using::
+By default the command named ``test`` from the config file is run::
 
     $ toll
+
+If you specify multiple commands each one is run on each package before
+proceeding to the next command::
+
+    $ toll build test
 
 For other options see::
 
