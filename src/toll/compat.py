@@ -6,4 +6,7 @@ except ImportError:
 try:
     from unittest import mock
 except ImportError:
-    import mock   # noqa
+    try:
+        import mock  # noqa
+    except ImportError:
+        pass
