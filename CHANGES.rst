@@ -2,7 +2,7 @@
 Change log
 ==========
 
-2.0 (unreleased)
+2.0 (2016-06-17)
 ================
 
 - Use a default configuration file named ``toll.ini``. This can be overwritten
