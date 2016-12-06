@@ -5,7 +5,7 @@ Change log
 2.1 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add compatibility with `setuptools >= 30.0`.
 
 
 2.0 (2016-06-17)

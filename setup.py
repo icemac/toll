@@ -1,7 +1,6 @@
 """poor man's integration testing"""
 
 from setuptools import setup, find_packages
-import glob
 import os.path
 
 
@@ -72,8 +71,5 @@ Topic :: Utilities
     packages=find_packages('src'),
     package_dir={'': 'src'},
     include_package_data=True,
-    data_files=[('',
-                 glob.glob(project_path('*.txt')),
-                 glob.glob(project_path('*.rst')))],
     zip_safe=False,
 )
