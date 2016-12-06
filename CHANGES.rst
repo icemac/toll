@@ -2,7 +2,7 @@
 Change log
 ==========
 
-2.1 (unreleased)
+2.1 (2016-12-06)
 ================
 
 - Add compatibility with `setuptools >= 30.0`.
