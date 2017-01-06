@@ -5,7 +5,7 @@ Change log
 2.2 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add support for Python 3.6.
 
 
 2.1 (2016-12-06)

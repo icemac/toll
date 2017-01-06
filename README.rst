@@ -10,6 +10,6 @@ Run the tests of multiple configured packages:
 
 * stopping with the first package which has a failing test
 
-This package is compatible with Python 2.7, 3.3, 3.4, 3.5 and PyPy2.
+This package is compatible with Python 2.7, 3.3, 3.4, 3.5, 3.6 and PyPy2.
 
 Documentation see: https://pythonhosted.org/toll/
