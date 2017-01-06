@@ -4,13 +4,13 @@ import re
 import sys
 
 
-def test_run____call____1():
+def test_run__Runner____call____1():
     """It returns `True` on success of all packages."""
     runner = Runner([test_command], get_packages('fine', 'finetoo'))
     assert True is runner()
 
 
-def test_run____call____2(capsys):
+def test_run__Runner____call____2(capsys):
     """It prints the tests results to stdout."""
     packages = get_packages('fine', 'finetoo')
     runner = Runner([test_command], packages)
@@ -21,7 +21,7 @@ def test_run____call____2(capsys):
     assert out.strip().endswith('SUCCESS :-)')
 
 
-def test_run____call____3(capsys):
+def test_run__Runner____call____3(capsys):
     """It stops after the first package with a failure."""
     packages = get_packages('bad', 'fine')
     runner = Runner([test_command], packages)
@@ -32,7 +32,7 @@ def test_run____call____3(capsys):
     assert out.strip().endswith('FAILURE :-(')
 
 
-def test_run____call____4(capsys):
+def test_run__Runner____call____4(capsys):
     """It runs multiple commands on each package."""
     packages = get_packages('fine', 'finetoo')
     runner = Runner([test_command, sys.executable], packages)
