@@ -18,7 +18,7 @@ except ImportError:
 
 setup(
     name='toll',
-    version='3.0.dev0',
+    version='3.0',
 
     install_requires=[
     ],
