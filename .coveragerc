@@ -4,8 +4,7 @@ source = toll
 
 [report]
 precision = 2
-omit = */interfaces.py
-       */test_*
+omit = */compat.py
 
 [html]
 directory = coverage-report
