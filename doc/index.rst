@@ -21,7 +21,9 @@ Requirements
 ============
 
 * The packages have to be checked out beforehand.
-* Currently the commands have to be identical across all packages.
+
+* Currently the commands have to be identical across all packages. (The only
+  option is to omit the command on a package when the precondition is not met.)
 
 Usage
 =====
@@ -43,9 +45,13 @@ are example contents of such a file.::
     my.package.one
     my.package.two
 
-    [commands]
-    test = bin/py.test
-    build = bin/buildout -n
+    [build]
+    precondition = test -e bin/buildout
+    command = bin/buildout -n
+
+    [test]
+    command = bin/py.test
+
 
 For the complete list of possible configuration options see the
 section :doc:`config`.

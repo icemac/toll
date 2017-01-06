@@ -1,12 +1,18 @@
-from .config import parsed_file, commands
+from .config import parsed_file, packages, commands, Command
 import pytest
 
 
 EXAMPLE_CONFIG = """\
-[commands]
-upload = bin/python upload.py
-test = bin/py.test
-run = bin/run
+[upload]
+precondition = test -e upload.py
+command = bin/python upload.py
+
+[test]
+command = bin/py.test
+
+[run]
+command = bin/run
+
 [packages]
 foo.a
 bar.x"""
@@ -22,19 +28,20 @@ def config_file(tmpdir):
     return config
 
 
+def test_config__packages__2(config_file):
+    """It raises a RuntimeError if the [packages] section is missing."""
+    with pytest.raises(RuntimeError) as err:
+        packages(config_file('[test]\ncommand=bin/test'))
+    assert ('Missing the section [packages] in the config file.' ==
+            str(err.value))
+
+
 def test_config__commands__1(config_file):
     """It returns the selected commands from the config file."""
-    assert (('bin/py.test', 'bin/python upload.py') ==
+    assert ((Command('bin/py.test'),
+             Command('bin/python upload.py',
+                     precondition='test -e upload.py')) ==
             commands(config_file(), ['test', 'upload']))
-
-
-def test_config__commands__2(config_file):
-    """It raises a `RuntimeError` if the commands section is missing."""
-    file = config_file("")
-    with pytest.raises(RuntimeError) as err:
-        commands(file, [])
-    assert ('Missing the section [commands] in the config file.' ==
-            str(err.value))
 
 
 def test_config__commands__3(config_file):
@@ -45,3 +52,42 @@ def test_config__commands__3(config_file):
     assert ("Section [commands] in the config file does not contain the key "
             "'stop' you requested to execute." ==
             str(err.value))
+
+
+def test_config__Command____repr____1():
+    """It contains the name of the wrapped command."""
+    cmd = Command('bin/test -v')
+    assert "<Command 'bin/test -v'>" == repr(cmd)
+
+
+def test_config__Command____repr____2():
+    """It contains the name of the precondition."""
+    cmd = Command('bin/test -v', 'test -e bin/test')
+    assert "<Command 'bin/test -v' if 'test -e bin/test'>" == repr(cmd)
+
+
+def test_config__Command____eq____1():
+    """It is equal to an identical command."""
+    cmd1 = Command('bin/test')
+    cmd2 = Command('bin/test')
+    assert cmd1 == cmd2
+
+
+def test_config__Command____ne____1():
+    """It is not equal to a command with a different command."""
+    cmd1 = Command('bin/test1', precondition='test -e bin/test')
+    cmd2 = Command('bin/test2', precondition='test -e bin/test')
+    assert cmd1 != cmd2
+
+
+def test_config__Command____ne____2():
+    """It is not equal to a command with a different precondition."""
+    cmd1 = Command('bin/test')
+    cmd2 = Command('bin/test', precondition='test -e bin/test')
+    assert cmd1 != cmd2
+
+
+def test_config__Command____ne____3():
+    """It is not equal to something which is not a command."""
+    cmd = Command('bin/test')
+    assert cmd != 'bin/test'

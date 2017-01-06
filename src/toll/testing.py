@@ -1,9 +1,10 @@
+from .config import Command
 import os.path
 import pkg_resources
 import sys
 
-
-test_command = '{0.executable} setup.py -q test'.format(sys)
+raw_test_command = '{0.executable} setup.py -q test'.format(sys)
+test_command = Command(raw_test_command)
 
 
 def get_packages(*names):

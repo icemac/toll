@@ -1,7 +1,7 @@
 from .compat import ConfigParser
 
 
-__all__ = ['parsed_file', 'packages', 'commands']
+__all__ = ['parsed_file', 'packages', 'Command', 'commands']
 
 
 def parsed_file(config_file):
@@ -17,10 +17,35 @@ def packages(config):
     return tuple(config.options('packages'))
 
 
+class Command:
+    """Command which can be executed."""
+
+    def __init__(self, command, precondition=''):
+        self.command = command
+        self.precondition = precondition
+
+    def __repr__(self):
+        """Representation of this wrapper."""
+        p = " if {0!r}".format(self.precondition) if self.precondition else ""
+        return "<Command {0!r}{1}>".format(self.command, p)
+
+    def __eq__(self, other):
+        """Compare two command instances."""
+        if not isinstance(other, Command):
+            return False
+        return (self.command == other.command and
+                self.precondition == other.precondition)
+
+    def __ne__(self, other):
+        """Own __eq__ requires own __ne__."""
+        return not self.__eq__(other)
+
+
 def commands(config, names):
     """Return the list of commands to run."""
-    _assert_section(config, 'commands')
-    commands = dict(config.items('commands'))
+    commands = {cmd: Command(**dict(config.items(cmd)))
+                for cmd in config.sections()
+                if cmd != 'packages'}
     try:
         return tuple(commands[x] for x in names)
     except KeyError as e:

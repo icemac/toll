@@ -17,13 +17,34 @@ Example::
     pkgs/baz
 
 
-[commands]
-==========
+[<command-name>]
+================
 
-This section contains the commands which can be run using `toll`.
+All sections besides ``[packages]`` are treated as commands.
 
-Example::
+Required parameters
+-------------------
 
-    [commands]
-    build = bin/buildout -n
-    test = bin/py.test
+* ``command`` - command to be run
+
+
+Optional parameters
+-------------------
+
+* ``precondition`` - do not run the command if the precondition is not met aka
+  ``the command returns a non-zero exit code.
+
+Example
+-------
+
+This a an example of some commands::
+
+    [build]
+    precondition = test -e bin/buildout
+    command = bin/buildout -n
+
+    [test]
+    command = bin/py.test
+
+The precondition of ``[build]`` checks whether ``bin/buildout`` exists as the
+command would fail if not.

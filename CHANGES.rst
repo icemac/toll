@@ -2,8 +2,20 @@
 Change log
 ==========
 
-2.2 (unreleased)
+3.0 (unreleased)
 ================
+
+Backward incompatible changes
+-----------------------------
+
+- Add a preconditions to the commands. If the precondition is not met the
+  command is not executed. This can be used to prevent running a command in
+  a package where it will fail.
+
+  This requires a new config file format. (See documentation.)
+
+Other changes
+-------------
 
 - Add support for Python 3.6.
 
