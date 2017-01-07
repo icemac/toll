@@ -7,6 +7,8 @@ Change log
 
 - Colour the own output of `toll`.
 
+- Add a line above the output for each package.
+
 
 3.0 (2017-01-06)
 ================

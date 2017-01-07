@@ -1,4 +1,6 @@
 from __future__ import print_function
+
+from .compat import get_terminal_size
 from colorama import Fore, Style
 import os
 import subprocess
@@ -31,9 +33,11 @@ class Runner:
         os.chdir(package)
         try:
             if self._precodition_is_met(precondition):
+                self._draw_line('*', Fore.GREEN)
                 print(GREEN + 'Running', cmd, GREEN + 'on', package)
                 return self._run_cmd(cmd)
             else:
+                self._draw_line('#', Fore.YELLOW)
                 print(YELLOW + 'Not running', cmd, YELLOW + 'on', package)
                 print(YELLOW + 'Precondition', precondition, YELLOW + 'on',
                       package, YELLOW + 'not met.')
@@ -51,6 +55,10 @@ class Runner:
     def _run_cmd(self, cmd):
         process = subprocess.Popen(cmd.split())
         return process.wait() == 0
+
+    def _draw_line(self, char, colour):
+        length = get_terminal_size().columns
+        print(colour + char * length)
 
     def render_failure(self):
         print(RED + 'FAILURE :-(')

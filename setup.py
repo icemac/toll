@@ -2,6 +2,7 @@
 
 from setuptools import setup, find_packages
 import os.path
+import shutil
 
 
 def project_path(*names):
@@ -17,15 +18,17 @@ try:
 except ImportError:
     test_require.append('mock')
 
+install_requires = [
+    'colorama',
+]
+
+if not hasattr(shutil, 'get_terminal_size'):
+    install_requires.append('backports.shutil_get_terminal_size')
 
 setup(
     name='toll',
     version='3.1.dev0',
-
-    install_requires=[
-        'colorama',
-    ],
-
+    install_requires=install_requires,
     extras_require={
         'test': test_require,
     },

@@ -10,3 +10,8 @@ except ImportError:
         import mock  # noqa
     except ImportError:
         pass
+
+try:
+    from shutil import get_terminal_size
+except ImportError:
+    from backports.shutil_get_terminal_size import get_terminal_size  # noqa
