@@ -34,7 +34,7 @@ Call the test runner::
 
 To run the tests of `toll` using `toll` itself call::
 
-    $ bin/toll selftest.ini
+    $ bin/toll
 
 
 Upload the docs
