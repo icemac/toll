@@ -21,6 +21,7 @@ setup(
     version='3.1.dev0',
 
     install_requires=[
+        'colorama',
     ],
 
     extras_require={

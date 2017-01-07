@@ -1,6 +1,12 @@
 from __future__ import print_function
+from colorama import Fore, Style
 import os
 import subprocess
+
+
+GREEN = Fore.GREEN + Style.BRIGHT
+YELLOW = Fore.YELLOW + Style.BRIGHT
+RED = Fore.RED + Style.BRIGHT
 
 
 class Runner:
@@ -25,11 +31,12 @@ class Runner:
         os.chdir(package)
         try:
             if self._precodition_is_met(precondition):
-                print('Running', cmd, 'on', package)
+                print(GREEN + 'Running', cmd, GREEN + 'on', package)
                 return self._run_cmd(cmd)
             else:
-                print('Not running', cmd, 'on', package)
-                print('Precondition', precondition, 'on', package, 'not met.')
+                print(YELLOW + 'Not running', cmd, YELLOW + 'on', package)
+                print(YELLOW + 'Precondition', precondition, YELLOW + 'on',
+                      package, YELLOW + 'not met.')
                 return True
         finally:
             os.chdir(cwd)
@@ -46,7 +53,7 @@ class Runner:
         return process.wait() == 0
 
     def render_failure(self):
-        print('FAILURE :-(')
+        print(RED + 'FAILURE :-(')
 
     def render_success(self):
-        print('SUCCESS :-)')
+        print(GREEN + 'SUCCESS :-)')

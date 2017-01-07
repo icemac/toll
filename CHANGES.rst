@@ -5,7 +5,7 @@ Change log
 3.1 (unreleased)
 ================
 
-- Nothing changed yet.
+- Colour the own output of `toll`.
 
 
 3.0 (2017-01-06)

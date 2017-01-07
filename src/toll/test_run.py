@@ -1,6 +1,7 @@
 from .config import Command
 from .run import Runner
 from .testing import get_packages, test_command, raw_test_command
+from .testing import remove_ansi_codes
 import re
 import sys
 
@@ -17,6 +18,7 @@ def test_run__Runner____call____2(capsys):
     runner = Runner([test_command], pkgs)
     runner()
     out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
     assert 'Running {0} on {1[0]}'.format(raw_test_command, pkgs) in out
     assert 'Running {0} on {1[1]}'.format(raw_test_command, pkgs) in out
     assert out.strip().endswith('SUCCESS :-)')
@@ -28,6 +30,7 @@ def test_run__Runner____call____3(capsys):
     runner = Runner([test_command], pkgs)
     runner()
     out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
     assert 'Running {0} on {1[0]}'.format(raw_test_command, pkgs) in out
     assert 'Running {0} on {1[1]}'.format(raw_test_command, pkgs) not in out
     assert out.strip().endswith('FAILURE :-(')
@@ -39,6 +42,7 @@ def test_run__Runner____call____4(capsys):
     runner = Runner([test_command, Command(sys.executable)], pkgs)
     runner()
     out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
     assert ("""\
 Running {0} on {2[0]}
 Running {0} on {2[1]}
@@ -55,6 +59,7 @@ def test_run__Runner____call____5(capsys):
     runner = Runner([Command(raw_test_command, precondition)], pkgs)
     runner()
     out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
     assert out.strip().endswith('SUCCESS :-)')
     assert 'Not running {0} on {1[0]}'.format(raw_test_command, pkgs) in out
     assert 'Precondition {0} on {1[0]} not met.'.format(

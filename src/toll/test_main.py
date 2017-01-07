@@ -1,6 +1,6 @@
 from .compat import mock
 from .main import main
-from .testing import get_packages, raw_test_command
+from .testing import get_packages, raw_test_command, remove_ansi_codes
 import os.path
 import pytest
 import re
@@ -35,6 +35,7 @@ def test_main__main__1(toll_ini, capsys):
     config_path = toll_ini('fine', 'finetoo')
     main(['-c', config_path])
     out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
     assert re.search('^Running .* setup.py -q test on .*/fine$', out, re.M)
     assert re.search('^Running .* setup.py -q test on .*/finetoo$', out, re.M)
     assert out.strip().endswith('SUCCESS :-)')
@@ -56,6 +57,7 @@ def test_main__main__3(toll_ini, capsys):
     config_path = toll_ini('bad', 'fine')
     main(['-c', config_path, 'test2'])
     out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
     assert re.search('^Not running .* setup.py -q test on .*/bad$', out, re.M)
     assert re.search(
         '^Precondition test -e fine.py on .*/bad not met.$', out, re.M)
