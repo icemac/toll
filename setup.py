@@ -27,7 +27,7 @@ if not hasattr(shutil, 'get_terminal_size'):
 
 setup(
     name='toll',
-    version='3.1.dev0',
+    version='3.1',
     install_requires=install_requires,
     extras_require={
         'test': test_require,

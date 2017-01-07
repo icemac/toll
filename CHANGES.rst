@@ -2,7 +2,7 @@
 Change log
 ==========
 
-3.1 (unreleased)
+3.1 (2017-01-07)
 ================
 
 - Colour the own output of `toll`.
