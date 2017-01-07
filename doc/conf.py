@@ -4,6 +4,7 @@ import os.path
 import shutil
 
 
+project = 'toll'
 author = 'Michael Howitz'
 _year_started = 2016
 _year = datetime.date.today().year

@@ -12,4 +12,4 @@ Run the tests of multiple configured packages:
 
 This package is compatible with Python 2.7, 3.3, 3.4, 3.5, 3.6 and PyPy2.
 
-Documentation see: https://pythonhosted.org/toll/
+Documentation see: http://toll.readthedocs.io

@@ -6,7 +6,7 @@ Developing toll
     Michael Howitz <icemac@gmx.net>
 
 :Documentation:
-    https://pythonhosted.org/toll/
+    http://toll.readthedocs.io
 
 :PyPI page:
     https://pypi.python.org/pypi/toll
@@ -35,11 +35,3 @@ Call the test runner::
 To run the tests of `toll` using `toll` itself call::
 
     $ bin/toll
-
-
-Upload the docs
-===============
-
-Note to self how to upload the documentation::
-
-    $ python3.5 setup.py upload_docs
