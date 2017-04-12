@@ -7,6 +7,8 @@ Change log
 
 - Move canonical repository to https://github.com/icemac/toll.
 
+- Add support for PyPy3.
+
 
 3.1 (2017-01-07)
 ================
