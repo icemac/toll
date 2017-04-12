@@ -41,8 +41,8 @@ setup(
 
     author='Michael Howitz',
     author_email='icemac@gmx.net',
-    url='https://bitbucket.org/icemac/toll/',
     license='MIT',
+    url='https://github.com/icemac/toll',
 
     keywords='test testing offline integration multiple packages',
     classifiers="""\
