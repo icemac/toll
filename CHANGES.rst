@@ -5,7 +5,7 @@ Change log
 3.2 (unreleased)
 ================
 
-- Nothing changed yet.
+- Move canonical repository to https://github.com/icemac/toll.
 
 
 3.1 (2017-01-07)

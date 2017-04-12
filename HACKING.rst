@@ -12,13 +12,13 @@ Developing toll
     https://pypi.python.org/pypi/toll
 
 :Issues:
-    https://bitbucket.org/icemac/toll/issues
+    https://github.com/icemac/toll/issues
 
 :Source code:
-    https://bitbucket.org/icemac/toll
+    https://github.com/icemac/toll
 
 :Change log:
-    https://bitbucket.org/icemac/toll/raw/tip/CHANGES.rst
+    https://raw.githubusercontent.com/icemac/toll/master/CHANGES.rst
 
 Run the tests
 =============
