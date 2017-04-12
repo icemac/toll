@@ -9,7 +9,7 @@ Developing toll
     http://toll.readthedocs.io
 
 :PyPI page:
-    https://pypi.python.org/pypi/toll
+    https://pypi.org/project/toll/
 
 :Issues:
     https://github.com/icemac/toll/issues
@@ -23,15 +23,14 @@ Developing toll
 Run the tests
 =============
 
-Install the test runner and the `toll` script::
+Install tox_ as the test runner and the call it to run the tests::
 
-    $ python3.5 bootstrap.py
-    $ bin/buildout
-
-Call the test runner::
-
-    $ bin/py.test
+    $ tox
 
 To run the tests of `toll` using `toll` itself call::
 
+    $ python3.5 bootstrap.py
+    $ bin/buildout
     $ bin/toll
+
+.. _tox : http://tox.readthedocs.io/en/latest/install.html
