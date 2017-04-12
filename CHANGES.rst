@@ -5,6 +5,8 @@ Change log
 3.2 (unreleased)
 ================
 
+- Change license from ZPL to MIT.
+
 - Move canonical repository to https://github.com/icemac/toll.
 
 - Add support for PyPy3.

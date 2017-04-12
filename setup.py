@@ -41,8 +41,8 @@ setup(
 
     author='Michael Howitz',
     author_email='icemac@gmx.net',
-    license='ZPL 2.1',
     url='https://bitbucket.org/icemac/toll/',
+    license='MIT',
 
     keywords='test testing offline integration multiple packages',
     classifiers="""\
@@ -50,7 +50,7 @@ Development Status :: 4 - Beta
 Environment :: Console
 Intended Audience :: Developers
 License :: OSI Approved
-License :: OSI Approved :: Zope Public License
+License :: OSI Approved :: MIT License
 Natural Language :: English
 Operating System :: OS Independent
 Programming Language :: Python
@@ -72,7 +72,6 @@ Topic :: Utilities
     description=__doc__.strip(),
     long_description='\n\n'.join(open(project_path(name)).read() for name in (
         'README.rst',
-        'COPYRIGHT.txt',
         'CHANGES.rst',
     )),
     packages=find_packages('src'),

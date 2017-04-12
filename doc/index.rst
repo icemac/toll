@@ -16,6 +16,9 @@ Run commands on multiple configured packages:
 
     <p><a href="https://commons.wikimedia.org/wiki/File:Schranke_fast_oben.svg#/media/File:Schranke_fast_oben.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Schranke_fast_oben.svg/1200px-Schranke_fast_oben.svg.png" alt="Schranke fast oben.svg"></a><br>By <a href="//commons.wikimedia.org/wiki/User:MichaelFrey" title="User:MichaelFrey">MichaelFrey</a> (<a href="//commons.wikimedia.org/wiki/User_talk:MichaelFrey" title="User talk:MichaelFrey"><span class="signature-talk">talk</span></a>) - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by/3.0" title="Creative Commons Attribution 3.0">CC BY 3.0</a>, https://commons.wikimedia.org/w/index.php?curid=7932305</p>
 
+This package is licensed under the `MIT License`_.
+
+.. _`MIT License` : https://opensource.org/licenses/BSD-2-Clause
 
 Requirements
 ============

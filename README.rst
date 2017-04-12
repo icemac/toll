@@ -13,3 +13,6 @@ Run the tests of multiple configured packages:
 This package is compatible with Python 2.7, 3.3, 3.4, 3.5, 3.6 and PyPy2.
 
 Documentation see: http://toll.readthedocs.io
+
+This package is licensed under the MIT License, see LICENSE.txt inside the
+package.
