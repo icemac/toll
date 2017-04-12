@@ -2,6 +2,8 @@
 toll — poor man's integration testing
 =====================================
 
+.. image:: https://travis-ci.org/icemac/toll.svg?branch=master
+
 toll = **t**\ est **o**\ ffline **l**\ ocally **l**\ ightweight
 
 Run the tests of multiple configured packages:
