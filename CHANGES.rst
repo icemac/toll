@@ -2,7 +2,7 @@
 Change log
 ==========
 
-3.2 (unreleased)
+3.2 (2017-05-16)
 ================
 
 - Change license from ZPL to MIT.
