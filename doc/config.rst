@@ -34,6 +34,10 @@ Optional parameters
 * ``precondition`` - do not run the command if the precondition is not met aka
   ``the command returns a non-zero exit code.
 
+* ``ignore-exit-code`` - Ignore the exit code of the command it set to any
+  value. This way the the run of `toll` does not stop after running the
+  command.
+
 Example
 -------
 
@@ -45,6 +49,10 @@ This a an example of some commands::
 
     [test]
     command = bin/py.test
+
+    [push]
+    ignore-exit-code = true
+    command = hg push
 
 The precondition of ``[build]`` checks whether ``bin/buildout`` exists as the
 command would fail if not.

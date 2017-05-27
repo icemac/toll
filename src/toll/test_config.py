@@ -13,6 +13,10 @@ command = bin/py.test
 [run]
 command = bin/run
 
+[run-through]
+ignore-exit-code = true
+command = bin/run
+
 [packages]
 foo.a
 bar.x"""
@@ -40,8 +44,9 @@ def test_config__commands__1(config_file):
     """It returns the selected commands from the config file."""
     assert ((Command('bin/py.test'),
              Command('bin/python upload.py',
-                     precondition='test -e upload.py')) ==
-            commands(config_file(), ['test', 'upload']))
+                     precondition='test -e upload.py'),
+             Command('bin/run', ignore_exit_code=True)) ==
+            commands(config_file(), ['test', 'upload', 'run-through']))
 
 
 def test_config__commands__3(config_file):
@@ -62,8 +67,9 @@ def test_config__Command____repr____1():
 
 def test_config__Command____repr____2():
     """It contains the name of the precondition."""
-    cmd = Command('bin/test -v', 'test -e bin/test')
-    assert "<Command 'bin/test -v' if 'test -e bin/test'>" == repr(cmd)
+    cmd = Command('bin/test -v', 'test -e bin/test', ignore_exit_code=True)
+    assert ("<Command 'bin/test -v' if 'test -e bin/test' ignore-exit-code>" ==
+            repr(cmd))
 
 
 def test_config__Command____eq____1():
@@ -84,6 +90,13 @@ def test_config__Command____ne____2():
     """It is not equal to a command with a different precondition."""
     cmd1 = Command('bin/test')
     cmd2 = Command('bin/test', precondition='test -e bin/test')
+    assert cmd1 != cmd2
+
+
+def test_config__Command____ne____2_5():
+    """It is not equal to a command with a different ignore-exit-code."""
+    cmd1 = Command('bin/test')
+    cmd2 = Command('bin/test', ignore_exit_code=True)
     assert cmd1 != cmd2
 
 

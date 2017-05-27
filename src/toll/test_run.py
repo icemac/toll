@@ -65,3 +65,15 @@ def test_run__Runner____call____5(capsys):
     assert 'Precondition {0} on {1[0]} not met.'.format(
         precondition, pkgs) in out
     assert 'Running {0} on {1[1]}'.format(raw_test_command, pkgs) in out
+
+
+def test_run__Runner____call____6(capsys):
+    """It does not stop if ignore_exit_code is set."""
+    pkgs = get_packages('bad', 'fine')
+    runner = Runner([Command(raw_test_command, ignore_exit_code=True)], pkgs)
+    runner()
+    out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
+    assert 'Running {0} on {1[0]}'.format(raw_test_command, pkgs) in out
+    assert 'Running {0} on {1[1]}'.format(raw_test_command, pkgs) in out
+    assert out.strip().endswith('SUCCESS :-)')

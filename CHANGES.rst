@@ -5,7 +5,8 @@ Change log
 3.3 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add an ``ignore-exit-code`` to the configuration of the commands to allow a
+  complete run-through of all packages.
 
 
 3.2 (2017-05-16)

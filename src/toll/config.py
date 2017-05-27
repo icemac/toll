@@ -20,30 +20,39 @@ def packages(config):
 class Command:
     """Command which can be executed."""
 
-    def __init__(self, command, precondition=''):
+    def __init__(self, command, precondition='', ignore_exit_code=False):
         self.command = command
         self.precondition = precondition
+        self.ignore_exit_code = bool(ignore_exit_code)
 
     def __repr__(self):
         """Representation of this wrapper."""
         p = " if {0!r}".format(self.precondition) if self.precondition else ""
-        return "<Command {0!r}{1}>".format(self.command, p)
+        i = " ignore-exit-code" if self.ignore_exit_code else ""
+        return "<Command {0!r}{1}{2}>".format(self.command, p, i)
 
     def __eq__(self, other):
         """Compare two command instances."""
         if not isinstance(other, Command):
             return False
         return (self.command == other.command and
-                self.precondition == other.precondition)
+                self.precondition == other.precondition and
+                self.ignore_exit_code == other.ignore_exit_code)
 
     def __ne__(self, other):
         """Own __eq__ requires own __ne__."""
         return not self.__eq__(other)
 
 
+def minus_to_underscore(string):
+    """Replace all minus in `string` by underscores."""
+    return string.replace('-', '_')
+
+
 def commands(config, names):
     """Return the list of commands to run."""
-    commands = {cmd: Command(**dict(config.items(cmd)))
+    commands = {cmd: Command(**dict((minus_to_underscore(k), v)
+                                    for k, v in config.items(cmd)))
                 for cmd in config.sections()
                 if cmd != 'packages'}
     try:

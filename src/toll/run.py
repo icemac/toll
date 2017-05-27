@@ -22,20 +22,25 @@ class Runner:
         for command in self.commands:
             for package in self.packages:
                 if not self.run(
-                        command.command, command.precondition, package):
+                        command.command, command.precondition,
+                        command.ignore_exit_code, package):
                     self.render_failure()
                     return False
         self.render_success()
         return True
 
-    def run(self, cmd, precondition, package):
+    def run(self, cmd, precondition, ignore_exit_code, package):
         cwd = os.getcwd()
         os.chdir(package)
         try:
             if self._precodition_is_met(precondition):
                 self._draw_line('*', Fore.GREEN)
                 print(GREEN + 'Running', cmd, GREEN + 'on', package)
-                return self._run_cmd(cmd)
+                result = self._run_cmd(cmd)
+                if ignore_exit_code:
+                    return True
+                else:
+                    return result
             else:
                 self._draw_line('#', Fore.YELLOW)
                 print(YELLOW + 'Not running', cmd, YELLOW + 'on', package)
