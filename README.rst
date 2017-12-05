@@ -2,7 +2,20 @@
 toll — poor man's integration testing
 =====================================
 
+.. image:: https://img.shields.io/pypi/v/toll.svg
+        :target: https://pypi.org/project/toll/
+        :alt: Latest release
+
+.. image:: https://img.shields.io/pypi/pyversions/toll.svg
+        :target: https://pypi.org/project/toll/
+        :alt: Supported Python versions
+
 .. image:: https://travis-ci.org/icemac/toll.svg?branch=master
+        :target: https://travis-ci.org/icemac/toll
+
+.. image:: https://readthedocs.org/projects/toll/badge/?version=latest
+        :target: https://toll.readthedocs.io/en/latest/
+        :alt: Documentation Status
 
 toll = **t**\ est **o**\ ffline **l**\ ocally **l**\ ightweight
 
