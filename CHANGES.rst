@@ -2,11 +2,13 @@
 Change log
 ==========
 
-3.3 (unreleased)
+4.0 (unreleased)
 ================
 
 - Add an ``ignore-exit-code`` to the configuration of the commands to allow a
   complete run-through of all packages.
+
+- Drop support for Python 3.3.
 
 
 3.2 (2017-05-16)
