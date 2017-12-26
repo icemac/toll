@@ -10,6 +10,8 @@ Change log
 
 - Drop support for Python 3.3.
 
+- Also release as wheel.
+
 
 3.2 (2017-05-16)
 ================
