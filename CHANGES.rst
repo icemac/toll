@@ -2,7 +2,7 @@
 Change log
 ==========
 
-4.0 (unreleased)
+4.0 (2017-12-26)
 ================
 
 - Add an ``ignore-exit-code`` to the configuration of the commands to allow a
