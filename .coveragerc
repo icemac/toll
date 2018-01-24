@@ -4,6 +4,7 @@ source = toll
 
 [report]
 precision = 2
+skip_covered = True
 omit = */compat.py
 
 [html]
