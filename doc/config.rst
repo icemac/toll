@@ -48,7 +48,7 @@ This a an example of some commands::
     command = bin/buildout -n
 
     [test]
-    command = bin/py.test
+    command = bin/pytest
 
     [push]
     ignore-exit-code = true

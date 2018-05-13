@@ -53,7 +53,7 @@ are example contents of such a file.::
     command = bin/buildout -n
 
     [test]
-    command = bin/py.test
+    command = bin/pytest
 
 
 For the complete list of possible configuration options see the

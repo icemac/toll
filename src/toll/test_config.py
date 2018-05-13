@@ -8,7 +8,7 @@ precondition = test -e upload.py
 command = bin/python upload.py
 
 [test]
-command = bin/py.test
+command = bin/pytest
 
 [run]
 command = bin/run
@@ -42,7 +42,7 @@ def test_config__packages__2(config_file):
 
 def test_config__commands__1(config_file):
     """It returns the selected commands from the config file."""
-    assert ((Command('bin/py.test'),
+    assert ((Command('bin/pytest'),
              Command('bin/python upload.py',
                      precondition='test -e upload.py'),
              Command('bin/run', ignore_exit_code=True)) ==
