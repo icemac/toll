@@ -14,9 +14,11 @@ RED = Fore.RED + Style.BRIGHT
 class Runner:
     """Run the tests."""
 
-    def __init__(self, commands, packages):
+    def __init__(self, commands, packages, start_at=''):
         self.commands = commands
         self.packages = packages
+        self.start_at = start_at
+        self.skipping_mode = True
 
     def __call__(self):
         for command in self.commands:
@@ -30,6 +32,13 @@ class Runner:
         return True
 
     def run(self, cmd, precondition, ignore_exit_code, package):
+        if self.skipping_mode:
+            if self.start_at in package:
+                self.skipping_mode = False
+            else:
+                self._draw_line('#', Fore.YELLOW)
+                print(YELLOW + 'Skipping', cmd, YELLOW + 'on', package)
+                return True
         cwd = os.getcwd()
         os.chdir(package)
         try:

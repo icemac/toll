@@ -63,3 +63,18 @@ def test_main__main__3(toll_ini, capsys):
         '^Precondition test -e fine.py on .*/bad not met.$', out, re.M)
     assert re.search('^Running .* setup.py -q test on .*/fine$', out, re.M)
     assert out.strip().endswith('SUCCESS :-)')
+
+
+def test_main__main__4(toll_ini, capsys):
+    """It starts with the required first package.
+
+    It skips over the ones before.
+    """
+    config_path = toll_ini('fine', 'finetoo')
+    main(['-c', config_path, '--start-at', 'finetoo', 'test'])
+    out, err = capsys.readouterr()
+    out = remove_ansi_codes(out)
+    assert re.search(
+        '^Skipping .* setup.py -q test on .*/fine$', out, re.M)
+    assert re.search('^Running .* setup.py -q test on .*/finetoo$', out, re.M)
+    assert out.strip().endswith('SUCCESS :-)')

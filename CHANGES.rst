@@ -5,6 +5,10 @@ Change log
 4.1 (unreleased)
 ================
 
+- Add option ``--start-at`` to specify the first package for which the command
+  is run. (It does a substring match against the packages list in the config
+  file.)
+
 - Add support for Python 3.7.
 
 - Drop support for Python 3.4.
