@@ -2,7 +2,7 @@
 Change log
 ==========
 
-4.1 (unreleased)
+4.1 (2018-08-03)
 ================
 
 - Add option ``--start-at`` to specify the first package for which the command
