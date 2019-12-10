@@ -3,6 +3,7 @@
 *.pyo
 *.xml
 .DS_Store
+.Python
 .cache
 .coverage
 .coverage.*
@@ -18,5 +19,7 @@ develop-eggs
 dist
 doc/_api
 eggs
+include/
+lib/
 parts
 test-report/
