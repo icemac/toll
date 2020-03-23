@@ -5,7 +5,7 @@ Change log
 4.2 (unreleased)
 ================
 
-- Nothing changed yet.
+- Keep supporting Python 2 by using older versions.
 
 
 4.1 (2018-08-03)
