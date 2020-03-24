@@ -2,8 +2,8 @@
 Change log
 ==========
 
-4.2 (unreleased)
-================
+4.1.1 (2020-03-24)
+==================
 
 - Keep supporting Python 2 by using older versions.
 
