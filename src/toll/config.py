@@ -7,7 +7,7 @@ __all__ = ['parsed_file', 'packages', 'Command', 'commands']
 def parsed_file(config_file):
     """Parse an ini-style config file."""
     parser = ConfigParser(allow_no_value=True)
-    parser.readfp(config_file)
+    parser.read_file(config_file)
     return parser
 
 

@@ -22,7 +22,7 @@ foo.a
 bar.x"""
 
 
-@pytest.fixture('function')
+@pytest.fixture(scope='function')
 def config_file(tmpdir):
     """Create a config file with the given content."""
     def config(content=EXAMPLE_CONFIG):

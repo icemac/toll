@@ -7,7 +7,7 @@ import re
 import shutil
 
 
-@pytest.fixture('function')
+@pytest.fixture(scope='function')
 def toll_ini(tmpdir):
     """Get a factory to create a path to a toll.ini file."""
     def config_file(*package_names):
