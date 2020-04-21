@@ -2,7 +2,6 @@
 
 from setuptools import setup, find_packages
 import os.path
-import shutil
 
 
 def project_path(*names):
@@ -11,19 +10,13 @@ def project_path(*names):
 
 test_require = [
     'pytest >= 3',
+    'mock;python_version<"3.3"',
 ]
-
-try:
-    import unittest.mock  # noqa
-except ImportError:
-    test_require.append('mock')
 
 install_requires = [
     'colorama',
+    'backports.shutil_get_terminal_size;python_version<"3.4"',
 ]
-
-if not hasattr(shutil, 'get_terminal_size'):
-    install_requires.append('backports.shutil_get_terminal_size')
 
 setup(
     name='toll',
@@ -58,6 +51,7 @@ Programming Language :: Python :: 3
 Programming Language :: Python :: 3.5
 Programming Language :: Python :: 3.6
 Programming Language :: Python :: 3.7
+Programming Language :: Python :: 3.8
 Programming Language :: Python :: Implementation :: CPython
 Programming Language :: Python :: Implementation :: PyPy
 Topic :: Software Development :: Testing

@@ -5,7 +5,9 @@ Change log
 4.2 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add support for Python 3.8.
+
+- Fix missing dependency in Python 2.7 when installed as wheel.
 
 
 4.1.1 (2020-03-24)

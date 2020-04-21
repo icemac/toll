@@ -29,7 +29,8 @@ Install tox_ as the test runner and the call it to run the tests::
 
 To run the tests of `toll` using `toll` itself call::
 
-    $ python3.5 bootstrap.py
+    $ python3 -m venv .
+    $ bin/pip install zc.buildout
     $ bin/buildout
     $ bin/toll
 

@@ -25,7 +25,7 @@ Run the tests of multiple configured packages:
 
 * stopping with the first package which has a failing test
 
-This package is compatible with Python 2.7, 3.5, 3.6, 3.7, PyPy2 and PyPy3.
+This package is compatible with Python 2.7, 3.5, 3.6, 3.7, 3.8, PyPy2 and PyPy3.
 
 Documentation see: http://toll.readthedocs.io
 
