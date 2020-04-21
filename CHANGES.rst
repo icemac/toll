@@ -2,8 +2,8 @@
 Change log
 ==========
 
-4.3 (unreleased)
-================
+4.2.1 (2020-04-21)
+==================
 
 - Fix AttributeError in Python 2.7 hidden by tests installing ``configparser``
   library.
