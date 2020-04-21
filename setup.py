@@ -20,7 +20,7 @@ install_requires = [
 
 setup(
     name='toll',
-    version='4.2.dev0',
+    version='4.2',
     install_requires=install_requires,
     extras_require={
         'test': test_require,
