@@ -1,4 +1,4 @@
-from .compat import ConfigParser
+from configparser import ConfigParser
 
 
 __all__ = ['parsed_file', 'packages', 'Command', 'commands']

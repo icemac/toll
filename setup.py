@@ -16,6 +16,7 @@ test_require = [
 install_requires = [
     'colorama',
     'backports.shutil_get_terminal_size;python_version<"3.4"',
+    'configparser < 5;python_version<"3.5"',
 ]
 
 setup(
