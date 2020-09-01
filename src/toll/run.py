@@ -62,9 +62,7 @@ class Runner:
     def _precodition_is_met(self, precondition):
         if not precondition:
             return True
-        if self._run_cmd(precondition):
-            return True
-        return False
+        return bool(self._run_cmd(precondition))
 
     def _run_cmd(self, cmd):
         process = subprocess.Popen(cmd.split())

@@ -51,10 +51,14 @@ def minus_to_underscore(string):
 
 def commands(config, names):
     """Return the list of commands to run."""
-    commands = {cmd: Command(**dict((minus_to_underscore(k), v)
-                                    for k, v in config.items(cmd)))
-                for cmd in config.sections()
-                if cmd != 'packages'}
+    commands = {
+        cmd: Command(
+            **{minus_to_underscore(k): v for k, v in config.items(cmd)}
+        )
+        for cmd in config.sections()
+        if cmd != 'packages'
+    }
+
     try:
         return tuple(commands[x] for x in names)
     except KeyError as e:
